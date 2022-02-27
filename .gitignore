@@ -1,0 +1,7 @@
+dist
+build
+node_modules
+.env
+*-lock.json
+.vscode
+init.sh

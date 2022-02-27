@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  # app:
+  #   build: .
+  #   restart: unless-stopped
+  #   ports:
+  #     - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+  #   stdin_open: true
+  #   tty: true
+  #   environment:
+  #     - HTTP_PORT=$NODE_DOCKER_PORT
+  #     - DATABASE_HOST=postgres
+  #     - DATABASE_PORT=$DATABASE_PORT
+  #     - DATABASE_USERNAME=$DATABASE_USERNAME
+  #     - DATABASE_PASSWORD=$DATABASE_PASSWORD
+  #     - DATABASE_NAME=$DATABASE_NAME
+  postgres:
+    image: "postgres"
+    ports:
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - development-volume:/data/development/volumes
+
+volumes:
+  development-volume:
+    name: "dev-${APP_ID}"
